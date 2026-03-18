@@ -1,7 +1,9 @@
-import { motion, useAnimationFrame } from 'motion/react';
-import { useState } from 'react';
+import { AnimatePresence, motion, useAnimationFrame } from 'motion/react';
+import { useCallback, useState } from 'react';
 
+import { PacManGame } from '@/components/react/PacManGame';
 import { useGameBoyMode } from '@/lib/use-gameboy-mode';
+import { useLongPress } from '@/lib/use-long-press';
 import { useReducedMotion } from '@/lib/use-reduced-motion';
 
 // Pac-Man with mouth open (13x13 grid)
@@ -78,8 +80,19 @@ function PixelGrid({ grid }: { grid: number[][] }) {
 
 function PixelCharacter() {
   const [mouthOpen, setMouthOpen] = useState(true);
+  const [showGame, setShowGame] = useState(false);
+  const [pressing, setPressing] = useState(false);
   const reduced = useReducedMotion();
   const isGameBoy = useGameBoyMode();
+
+  const openGame = useCallback(() => setShowGame(true), []);
+  const closeGame = useCallback(() => setShowGame(false), []);
+
+  const longPressHandlers = useLongPress(openGame, {
+    duration: 1500,
+    onStart: () => setPressing(true),
+    onCancel: () => setPressing(false),
+  });
 
   useAnimationFrame((time) => {
     if (reduced || isGameBoy) return;
@@ -105,6 +118,7 @@ function PixelCharacter() {
       };
 
   return (
+    <>
     <motion.div {...containerProps} className="flex justify-center">
       <div className="relative" data-pixel-character>
         {/* Pac-dots infinite carousel (normal mode) */}
@@ -154,8 +168,11 @@ function PixelCharacter() {
           </div>
         )}
 
-        {/* Main character box */}
-        <div className="relative border-4 border-primary bg-linear-to-br from-bg-subtle to-bg p-4 pixel-corner sm:p-6 md:p-8">
+        {/* Main character box — long press to play */}
+        <div
+          {...longPressHandlers}
+          className={`relative cursor-pointer select-none border-4 border-primary bg-linear-to-br from-bg-subtle to-bg p-4 pixel-corner sm:p-6 md:p-8 transition-transform ${pressing ? 'scale-95' : ''}`}
+        >
           <div className="absolute inset-0 flex items-center justify-center">
             <PixelGrid grid={currentGrid} />
           </div>
@@ -172,6 +189,12 @@ function PixelCharacter() {
         </div>
       </div>
     </motion.div>
+
+    {/* Pac-Man mini-game */}
+    <AnimatePresence>
+      {showGame && <PacManGame onClose={closeGame} />}
+    </AnimatePresence>
+    </>
   );
 }
 
