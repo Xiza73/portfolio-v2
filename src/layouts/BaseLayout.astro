@@ -21,10 +21,7 @@ const jsonLd = {
   alternateName: 'Xiza',
   jobTitle: 'Software Engineer',
   url: siteUrl,
-  sameAs: [
-    'https://github.com/xiza',
-    'https://linkedin.com/in/xiza',
-  ],
+  sameAs: ['https://github.com/xiza', 'https://linkedin.com/in/xiza'],
 };
 ---
 
@@ -76,14 +73,6 @@ const jsonLd = {
     <title>{title}</title>
   </head>
   <body class="crt-overlay min-h-screen bg-bg text-text">
-    <!-- Skip to content -->
-    <a
-      href="#about"
-      class="fixed left-2 top-2 z-[100] -translate-y-full bg-primary px-4 py-2 pixel-text text-xs text-text-dark transition-transform focus:translate-y-0 pixel-corner"
-    >
-      Skip to content
-    </a>
-
     <slot />
   </body>
 </html>

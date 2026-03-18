@@ -185,7 +185,6 @@ dist/**
 .astro/**
 node_modules/**
 coverage/**
-docs/ui-draft/**
 ```
 
 ---

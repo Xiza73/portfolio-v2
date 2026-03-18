@@ -7,14 +7,17 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
   // Global ignores
   {
-    ignores: ['dist/**', '.astro/**', 'node_modules/**', 'coverage/**', 'docs/ui-draft/**'],
+    ignores: ['dist/**', '.astro/**', 'node_modules/**', 'coverage/**'],
   },
 
   // Base JS rules
   js.configs.recommended,
 
-  // TypeScript rules
-  ...tseslint.configs.recommended,
+  // TypeScript rules (only for TS/TSX files, not Astro)
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: ['**/*.{ts,tsx}'],
+  })),
 
   // Astro rules
   ...eslintPluginAstro.configs.recommended,
@@ -28,6 +31,18 @@ export default tseslint.config(
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
       'no-console': 'warn',
+    },
+  },
+
+  // TypeScript-specific custom rules + browser globals
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+    rules: {
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': [
         'error',
@@ -37,16 +52,6 @@ export default tseslint.config(
         'error',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
       ],
-    },
-  },
-
-  // Browser globals for client-side files
-  {
-    files: ['src/**/*.{ts,tsx}'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
     },
   },
 

@@ -35,7 +35,6 @@ Antes de implementar cualquier feature, consulta los documentos relevantes:
 | i18n                   | [i18n.md](docs/i18n.md)                                | Estrategia de internacionalización (ES/EN)          |
 | Reglas de Negocio      | [business-rules.md](docs/business-rules.md)            | Reglas que la UI debe respetar                      |
 | Linting                | [linting.md](docs/linting.md)                          | ESLint, Prettier, TypeScript strict                 |
-| Primer borrador de UI  | [App.tsx](docs/ui-draft/src/app/App.tsx)               | Código inicial de la UI basado en Figma             |
 
 ---
 
@@ -141,7 +140,7 @@ pnpm test:e2e     # Tests e2e (Playwright)
 
 ## Secciones del Portafolio
 
-Basado en el diseño de Figma (ver `docs/ui-draft/`):
+Basado en el diseño original de Figma:
 
 1. **Header** — Navegación fija con logo pixelado, links de sección, menú hamburguesa mobile.
 2. **Hero** — Presentación principal, título "Software Engineer", avatar pixel-art, links sociales, CTA.
