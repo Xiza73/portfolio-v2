@@ -20,7 +20,7 @@ const navItems = getNavItems(t.nav);
 <BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
   <Header navItems={navItems} lang={lang} switchLabel={t.language.switch_label} />
 
-  <main>
+  <main class="overflow-x-clip">
     <Hero t={t.hero} />
     <Projects t={t.projects} />
     <Skills t={t.skills} />

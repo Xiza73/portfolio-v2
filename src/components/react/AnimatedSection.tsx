@@ -14,8 +14,8 @@ interface AnimatedSectionProps {
 const directionMap = {
   up: { y: 30, x: 0 },
   down: { y: -30, x: 0 },
-  left: { x: 50, y: 0 },
-  right: { x: -50, y: 0 },
+  left: { x: 30, y: 0 },
+  right: { x: -30, y: 0 },
   scale: { x: 0, y: 0 },
 } as const;
 
