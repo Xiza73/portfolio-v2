@@ -1,46 +1,88 @@
-# Astro Starter Kit: Basics
+# Xiza.dev — Portfolio
 
-```sh
-pnpm create astro@latest -- --template basics
+Portafolio personal de Manuel Fajardo (Xiza), Software Engineer. Estética retro pixel-art con fondo negro, tipografía "Press Start 2P", bordes pixelados y paleta dorado/cyan/negro.
+
+## Stack
+
+- **Framework:** [Astro 6](https://astro.build) (SSG + islands)
+- **UI:** [React 19](https://react.dev) (interactive islands) + [Tailwind CSS 4](https://tailwindcss.com)
+- **Lenguaje:** TypeScript (strict mode)
+- **Animaciones:** [Motion](https://motion.dev) (framer-motion)
+- **Icons:** [Lucide React](https://lucide.dev)
+- **Forms:** React Hook Form + Zod
+- **Testing:** Vitest + React Testing Library + Playwright
+- **Package Manager:** pnpm
+
+## Inicio rápido
+
+```bash
+# Requisitos: Node.js >= 22.12.0, pnpm
+pnpm install
+pnpm dev        # http://localhost:4321
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Comandos
 
-## 🚀 Project Structure
+| Comando              | Descripción                     |
+| -------------------- | ------------------------------- |
+| `pnpm dev`           | Servidor de desarrollo          |
+| `pnpm build`         | Build de producción (SSG)       |
+| `pnpm preview`       | Preview del build               |
+| `pnpm lint`          | Linting con ESLint              |
+| `pnpm lint:fix`      | Lint con auto-fix               |
+| `pnpm format`        | Formatear con Prettier          |
+| `pnpm test`          | Tests unitarios (Vitest)        |
+| `pnpm test:e2e`      | Tests e2e (Playwright)          |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Estructura del proyecto
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/
+│   ├── react/         # Islands interactivas (React 19)
+│   ├── astro/         # Componentes estáticos (Astro)
+│   └── ui/            # Componentes UI reutilizables
+├── layouts/           # BaseLayout.astro
+├── pages/             # Páginas (index, 404, API)
+├── data/              # Datos estáticos (proyectos, skills, social links)
+├── hooks/             # Custom React hooks
+├── i18n/              # Internacionalización (ES/EN)
+├── lib/               # Utilidades y hooks compartidos
+├── schemas/           # Schemas Zod de validación
+├── stores/            # State management (nanostores)
+├── styles/            # Global CSS + theme
+└── types/             # TypeScript types
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Secciones
 
-## 🧞 Commands
+1. **Header** — Navegación fija con logo pixelado, links de sección, menú hamburguesa mobile
+2. **Hero** — Presentación principal, Pac-Man pixel-art animado, links sociales, CTA
+3. **Projects** — Grid de proyectos con tecnologías, links a código/demo
+4. **Skills** — Categorías de habilidades con barras de proficiencia animadas
+5. **Contact** — Formulario de contacto con validación (React Hook Form + Zod)
+6. **Footer** — Créditos y copyright
+7. **404** — Página de error como juego de plataformas pixel-art
 
-All commands are run from the root of the project, from a terminal:
+## Easter eggs
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+El sitio contiene varios easter eggs ocultos. Algunas pistas:
 
-## 👀 Want to learn more?
+- `↑↑↓↓←→←→BA`
+- Mantén presionado ciertas cosas...
+- Haz click donde nadie hace click
+- Haz hover con paciencia
+- Abre la consola del navegador
+- Visita una página que no existe
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## i18n
+
+Soporte bilingüe ES/EN. Los textos de UI se manejan via archivos JSON en `src/i18n/messages/`. El idioma se detecta y persiste en `localStorage`.
+
+## Theming
+
+Sistema de theming basado en CSS variables definidas en `src/styles/theme.css`. Los colores se exponen como utilidades de Tailwind via `@theme inline`.
+
+## Licencia
+
+MIT
