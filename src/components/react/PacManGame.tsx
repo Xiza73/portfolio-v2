@@ -40,8 +40,6 @@ const KEY_TO_DIR: Record<string, Position> = {
   KeyD: { x: 1, y: 0 },
 };
 
-const MOVEMENT_KEYS = new Set(Object.keys(KEY_TO_DIR));
-
 interface Position {
   x: number;
   y: number;
@@ -71,7 +69,8 @@ function canMove(maze: number[][], x: number, y: number): boolean {
 }
 
 function wrapPosition(pos: Position): Position {
-  let { x, y } = pos;
+  let { x } = pos;
+  const { y } = pos;
   if (x < 0) x = MAZE_WIDTH - 1;
   else if (x >= MAZE_WIDTH) x = 0;
   return { x, y };
@@ -93,9 +92,7 @@ function moveGhost(maze: number[][], ghost: Ghost, target: Position): Ghost {
 
   // Avoid reversing direction unless it's the only option
   const reverse = { x: -ghost.dir.x, y: -ghost.dir.y };
-  const preferred = valid.filter(
-    (d) => !(d.x === reverse.x && d.y === reverse.y),
-  );
+  const preferred = valid.filter((d) => !(d.x === reverse.x && d.y === reverse.y));
   const choices = preferred.length > 0 ? preferred : valid;
 
   let best = choices[0];
@@ -235,15 +232,15 @@ function PacManGame({ onClose }: { onClose: () => void }) {
 
       const rawX = prevPacman.x + dir.x;
       const rawY = prevPacman.y + dir.y;
-      const newPacman = canMove(maze, rawX, rawY)
-        ? wrapPosition({ x: rawX, y: rawY })
-        : prevPacman;
+      const newPacman = canMove(maze, rawX, rawY) ? wrapPosition({ x: rawX, y: rawY }) : prevPacman;
 
       // --- Eat dot or power pellet ---
       let atepower = false;
       if (
-        newPacman.x >= 0 && newPacman.x < MAZE_WIDTH &&
-        newPacman.y >= 0 && newPacman.y < MAZE_HEIGHT
+        newPacman.x >= 0 &&
+        newPacman.x < MAZE_WIDTH &&
+        newPacman.y >= 0 &&
+        newPacman.y < MAZE_HEIGHT
       ) {
         const cell = maze[newPacman.y][newPacman.x];
         if (cell === 0) {
@@ -266,9 +263,7 @@ function PacManGame({ onClose }: { onClose: () => void }) {
 
       // --- Compute new ghost positions ---
       setGhosts((prevGhosts) => {
-        const newGhosts = prevGhosts.map((ghost) =>
-          moveGhost(maze, ghost, prevPacman),
-        );
+        const newGhosts = prevGhosts.map((ghost) => moveGhost(maze, ghost, prevPacman));
 
         // --- Collision detection (same position OR position swap) ---
         for (let i = 0; i < newGhosts.length; i++) {
@@ -276,8 +271,7 @@ function PacManGame({ onClose }: { onClose: () => void }) {
           const gNew = newGhosts[i].pos;
           const scared = atepower || newGhosts[i].scared;
 
-          const samePos =
-            gNew.x === newPacman.x && gNew.y === newPacman.y;
+          const samePos = gNew.x === newPacman.x && gNew.y === newPacman.y;
           const swapped =
             gNew.x === prevPacman.x &&
             gNew.y === prevPacman.y &&
@@ -316,9 +310,10 @@ function PacManGame({ onClose }: { onClose: () => void }) {
       // --- Win condition ---
       const remaining = maze.flat().filter((c) => c === 0 || c === 3).length;
       // Account for the dot we may have just eaten (maze state not yet updated in this closure)
-      const justAte = (
-        newPacman.x !== prevPacman.x || newPacman.y !== prevPacman.y
-      ) && maze[newPacman.y]?.[newPacman.x] === 0 || maze[newPacman.y]?.[newPacman.x] === 3;
+      const justAte =
+        ((newPacman.x !== prevPacman.x || newPacman.y !== prevPacman.y) &&
+          maze[newPacman.y]?.[newPacman.x] === 0) ||
+        maze[newPacman.y]?.[newPacman.x] === 3;
       const adjusted = justAte ? remaining - 1 : remaining;
       if (adjusted <= 0) {
         setGameState('won');
@@ -353,7 +348,7 @@ function PacManGame({ onClose }: { onClose: () => void }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-bg/95"
+      className="fixed inset-0 z-9999 flex items-center justify-center bg-bg/95"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -363,12 +358,9 @@ function PacManGame({ onClose }: { onClose: () => void }) {
       <div className="flex flex-col items-center gap-3 sm:gap-4">
         {/* Header */}
         <div className="flex w-full items-center justify-between px-1">
-          <span className="pixel-text text-[8px] text-primary sm:text-[10px]">
-            SCORE: {score}
-          </span>
+          <span className="pixel-text text-[8px] text-primary sm:text-[10px]">SCORE: {score}</span>
           <span className="pixel-text text-[8px] text-accent sm:text-[10px]">
-            {totalDots - maze.flat().filter((c) => c === 0 || c === 3).length}/
-            {totalDots}
+            {totalDots - maze.flat().filter((c) => c === 0 || c === 3).length}/{totalDots}
           </span>
         </div>
 
@@ -377,32 +369,21 @@ function PacManGame({ onClose }: { onClose: () => void }) {
           className="relative border-4 border-primary pixel-corner"
           style={{ touchAction: 'none' }}
         >
-          <div
-            className="grid gap-0"
-            style={{ gridTemplateColumns: `repeat(${MAZE_WIDTH}, 1fr)` }}
-          >
+          <div className="grid gap-0" style={{ gridTemplateColumns: `repeat(${MAZE_WIDTH}, 1fr)` }}>
             {maze.map((row, y) =>
               row.map((cell, x) => {
                 const isPacman = pacman.x === x && pacman.y === y;
-                const ghost = ghosts.find(
-                  (g) => g.pos.x === x && g.pos.y === y,
-                );
+                const ghost = ghosts.find((g) => g.pos.x === x && g.pos.y === y);
                 const isTunnel = cell === 4;
 
                 return (
                   <div
                     key={`${x}-${y}`}
-                    className={`flex aspect-square w-[18px] items-center justify-center sm:w-[22px] md:w-[26px] ${
-                      cell === 1
-                        ? 'bg-primary/20'
-                        : isTunnel
-                          ? 'bg-bg-subtle/30'
-                          : 'bg-bg'
+                    className={`flex aspect-square w-4.5 items-center justify-center sm:w-5.5 md:w-6.5 ${
+                      cell === 1 ? 'bg-primary/20' : isTunnel ? 'bg-bg-subtle/30' : 'bg-bg'
                     }`}
                   >
-                    {isPacman && (
-                      <div className="h-[70%] w-[70%] rounded-full bg-primary" />
-                    )}
+                    {isPacman && <div className="h-[70%] w-[70%] rounded-full bg-primary" />}
                     {ghost && !isPacman && (
                       <div
                         className={`h-[70%] w-[70%] rounded-t-full ${
@@ -461,9 +442,7 @@ function PacManGame({ onClose }: { onClose: () => void }) {
             <span className="pixel-text text-[7px] text-primary/50 sm:text-[8px]">
               WASD / ARROWS / SWIPE
             </span>
-            <span className="pixel-text text-[7px] text-primary/50 sm:text-[8px]">
-              ESC TO EXIT
-            </span>
+            <span className="pixel-text text-[7px] text-primary/50 sm:text-[8px]">ESC TO EXIT</span>
           </div>
         )}
       </div>

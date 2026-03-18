@@ -35,7 +35,7 @@ function TransitionOverlay() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-[9998] flex items-center justify-center"
+      className="pointer-events-none fixed inset-0 z-9998 flex items-center justify-center"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -62,7 +62,7 @@ function TransitionOverlay() {
 function Toast({ message }: { message: string }) {
   return (
     <motion.div
-      className="fixed bottom-8 left-1/2 z-[10000] -translate-x-1/2 border-4 border-primary bg-bg px-6 py-3 pixel-corner"
+      className="fixed bottom-8 left-1/2 z-10000 -translate-x-1/2 border-4 border-primary bg-bg px-6 py-3 pixel-corner"
       initial={{ y: 80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 80, opacity: 0 }}
@@ -76,7 +76,7 @@ function Toast({ message }: { message: string }) {
 }
 
 function GameBoyMode() {
-  const [active, setActive] = useState(false);
+  const [_active, setActive] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [showTransition, setShowTransition] = useState(false);
   const reduced = useReducedMotion();
