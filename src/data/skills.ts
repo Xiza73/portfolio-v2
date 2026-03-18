@@ -6,32 +6,32 @@ export const skillCategories: SkillCategory[] = [
   {
     title: 'FRONTEND',
     icon: 'globe',
-    skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Vue.js'],
+    skills: ['React', 'Angular', 'Next.js', 'Tailwind CSS', 'Vue.js'],
   },
   {
     title: 'BACKEND',
     icon: 'server',
-    skills: ['Node.js', 'Python', 'Express', 'FastAPI', 'GraphQL'],
+    skills: ['Node.js', 'Nest.js', 'Express', 'Spring Boot', 'GraphQL'],
   },
   {
     title: 'DATABASE',
     icon: 'database',
-    skills: ['PostgreSQL', 'MongoDB', 'Redis', 'MySQL', 'Firebase'],
-  },
-  {
-    title: 'MOBILE',
-    icon: 'smartphone',
-    skills: ['React Native', 'Flutter', 'iOS', 'Android', 'PWA'],
+    skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Supabase', 'Firebase'],
   },
   {
     title: 'LANGUAGES',
     icon: 'code',
-    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'Go'],
+    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++'],
   },
   {
     title: 'TOOLS',
     icon: 'wrench',
-    skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Kubernetes'],
+    skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Jira'],
+  },
+  {
+    title: 'MOBILE',
+    icon: 'smartphone',
+    skills: ['React Native', 'PWA'],
   },
 ];
 
@@ -44,7 +44,7 @@ const proficiencyData: ProficiencyData[] = [
   { id: 'full_stack_dev', level: 90 },
   { id: 'front_end', level: 95 },
   { id: 'back_end', level: 85 },
-  { id: 'database_mgmt', level: 80 },
+  { id: 'database_mgmt', level: 85 },
 ];
 
 export function getProficiencyLevels(lang: Language): ProficiencyLevel[] {

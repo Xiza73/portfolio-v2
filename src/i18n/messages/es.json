@@ -27,17 +27,17 @@
       "back": "BACK"
     },
     "items": {
-      "ecommerce": {
-        "description": "Plataforma e-commerce full-stack con gestión de inventario en tiempo real e integración de pagos."
+      "habit_summaq": {
+        "description": "Aplicación de gestión de hábitos con enfoque en bienestar y productividad. Permite a los usuarios gestionar sus finanzas y hábitos diarios."
       },
-      "task_manager": {
-        "description": "Sistema colaborativo de gestión de tareas con actualizaciones en tiempo real y analíticas de equipo."
+      "discord_bot": {
+        "description": "Bot de Discord personalizado para gestión de comunidades, con funcionalidades como moderación, juegos y automatización."
       },
-      "ai_chatbot": {
-        "description": "Chatbot inteligente que utiliza procesamiento de lenguaje natural para automatización de soporte al cliente."
+      "real_time_chat": {
+        "description": "Aplicación de chat en tiempo real con funcionalidades avanzadas como salas de chat y mensajes privados."
       },
-      "analytics": {
-        "description": "Dashboard de analíticas en tiempo real con visualización de datos y funciones de reportes."
+      "water_reminder_extension": {
+        "description": "Extensión de navegador para recordar beber agua regularmente, con notificaciones personalizadas y seguimiento de hidratación."
       }
     }
   },

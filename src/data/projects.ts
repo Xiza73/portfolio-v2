@@ -17,37 +17,32 @@ interface ProjectData {
 
 const projectsData: ProjectData[] = [
   {
-    id: 'ecommerce',
-    title: 'E-COMMERCE.APP',
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+    id: 'habit_summaq',
+    title: 'HABIT_SUMMAQ.APP',
+    tech: ['React', 'Next.js', 'Node.js', 'Nest.js', 'PostgreSQL', 'Redis'],
     github: [
-      { labelKey: 'front', url: 'https://github.com' },
-      { labelKey: 'back', url: 'https://github.com' },
+      { labelKey: 'front', url: 'https://github.com/Xiza73/habit-sumaq-web' },
+      { labelKey: 'back', url: 'https://github.com/Xiza73/habit-sumaq-backend' },
     ],
-    demo: 'https://demo.com',
+    demo: 'https://habit-sumaq-web.vercel.app',
   },
   {
-    id: 'task_manager',
-    title: 'TASK_MANAGER.SYS',
-    tech: ['TypeScript', 'Next.js', 'MongoDB', 'WebSocket'],
-    github: [
-      { labelKey: 'front', url: 'https://github.com' },
-      { labelKey: 'back', url: 'https://github.com' },
-    ],
-    demo: 'https://demo.com',
+    id: 'discord_bot',
+    title: 'DISCORD_BOT.EXE',
+    tech: ['TypeScript', 'Discord.js', 'Node.js', 'MongoDB'],
+    github: [{ labelKey: 'code', url: 'https://github.com/Xiza73/BotitoV2' }],
   },
   {
-    id: 'ai_chatbot',
-    title: 'AI_CHATBOT.EXE',
-    tech: ['Python', 'TensorFlow', 'FastAPI', 'React'],
-    github: [{ labelKey: 'code', url: 'https://github.com' }],
+    id: 'real_time_chat',
+    title: 'REAL_TIME_CHAT.BAT',
+    tech: ['React', 'Next.js', 'Supabase', 'Supabase Realtime'],
+    github: [{ labelKey: 'code', url: 'https://github.com/Xiza73/realtime-chat' }],
   },
   {
-    id: 'analytics',
-    title: 'ANALYTICS.DASH',
-    tech: ['Vue.js', 'D3.js', 'Express', 'MySQL'],
-    github: [{ labelKey: 'code', url: 'https://github.com' }],
-    demo: 'https://demo.com',
+    id: 'water_reminder_extension',
+    title: 'WATER_REMINDER_EXTENSION.CRX',
+    tech: ['React', 'TypeScript', 'Chrome Extensions API'],
+    github: [{ labelKey: 'code', url: 'https://github.com/Xiza73/water-reminder-extension' }],
   },
 ];
 

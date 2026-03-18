@@ -27,17 +27,17 @@
       "back": "BACK"
     },
     "items": {
-      "ecommerce": {
-        "description": "Full-stack e-commerce platform with real-time inventory management and payment integration."
+      "habit_summaq": {
+        "description": "Habit management application focused on wellness and productivity. Allows users to manage their finances and daily habits."
       },
-      "task_manager": {
-        "description": "Collaborative task management system with real-time updates and team analytics."
+      "discord_bot": {
+        "description": "Custom Discord bot for community management, featuring moderation, games, and automation capabilities."
       },
-      "ai_chatbot": {
-        "description": "Intelligent chatbot using natural language processing for customer support automation."
+      "real_time_chat": {
+        "description": "Real-time chat application with advanced features like chat rooms and private messaging."
       },
-      "analytics": {
-        "description": "Real-time analytics dashboard with data visualization and reporting features."
+      "water_reminder_extension": {
+        "description": "Browser extension to remind users to drink water regularly, with customizable notifications and hydration tracking."
       }
     }
   },
