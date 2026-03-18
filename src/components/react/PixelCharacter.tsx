@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { motion, useAnimationFrame } from 'motion/react';
+import { useState } from 'react';
 
 // Pac-Man with mouth open (13x13 grid)
 const PACMAN_OPEN = [
@@ -54,6 +55,14 @@ function PacManGrid({ grid }: { grid: number[][] }) {
 }
 
 function PixelCharacter() {
+  const [mouthOpen, setMouthOpen] = useState(true);
+
+  // Toggle mouth every 250ms using animation frame for crisp swap
+  useAnimationFrame((time) => {
+    const shouldBeOpen = Math.floor(time / 250) % 2 === 0;
+    setMouthOpen(shouldBeOpen);
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -63,40 +72,35 @@ function PixelCharacter() {
       className="flex justify-center"
     >
       <div className="relative">
-        {/* Pac-dots being eaten */}
-        <div className="absolute -right-15 top-1/2 -translate-y-1/2 flex gap-3 sm:-right-20 sm:gap-4 md:-right-25 md:gap-5">
-          {[0, 1, 2, 3].map((i) => (
-            <motion.div
-              key={i}
-              animate={{ opacity: [1, 1, 0, 1] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.4,
-                ease: 'steps(1)',
-              }}
-              className="h-2 w-2 rounded-full bg-primary sm:h-2.5 sm:w-2.5 md:h-3 md:w-3"
-            />
-          ))}
+        {/* Pac-dots infinite carousel */}
+        <div className="absolute left-full top-1/2 ml-2 w-24 -translate-y-1/2 overflow-hidden sm:ml-3 sm:w-32 md:ml-4 md:w-40">
+          <motion.div
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            className="flex w-max"
+          >
+            {[0, 1].map((set) => (
+              <div
+                key={set}
+                className="flex items-center gap-4 pr-4 sm:gap-5 sm:pr-5 md:gap-6 md:pr-6"
+              >
+                {[0, 1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="h-2 w-2 shrink-0 rounded-full bg-primary sm:h-2.5 sm:w-2.5 md:h-3 md:w-3"
+                  />
+                ))}
+              </div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Main character box */}
         <div className="relative border-4 border-primary bg-linear-to-br from-bg-subtle to-bg p-4 pixel-corner sm:p-6 md:p-8">
-          {/* Pac-Man with mouth animation */}
-          <motion.div
-            animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.3, repeat: Infinity, repeatType: 'reverse' }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <PacManGrid grid={PACMAN_OPEN} />
-          </motion.div>
-          <motion.div
-            animate={{ opacity: [0, 1] }}
-            transition={{ duration: 0.3, repeat: Infinity, repeatType: 'reverse' }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <PacManGrid grid={PACMAN_CLOSED} />
-          </motion.div>
+          {/* Pac-Man with crisp frame swap */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <PacManGrid grid={mouthOpen ? PACMAN_OPEN : PACMAN_CLOSED} />
+          </div>
 
           {/* Invisible spacer to maintain box size */}
           <div className="invisible">
