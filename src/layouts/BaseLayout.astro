@@ -1,4 +1,6 @@
 ---
+import { GameBoyMode } from '@/components/react/GameBoyMode';
+
 interface Props {
   title?: string;
   description?: string;
@@ -71,8 +73,16 @@ const jsonLd = {
     />
 
     <title>{title}</title>
+
+    <!-- Prevent flash of wrong theme when Game Boy mode is saved -->
+    <script is:inline>
+      if (localStorage.getItem('gameboy-mode') === 'on') {
+        document.documentElement.setAttribute('data-gameboy', '');
+      }
+    </script>
   </head>
   <body class="crt-overlay min-h-screen bg-bg text-text">
     <slot />
+    <GameBoyMode client:load />
   </body>
 </html>
