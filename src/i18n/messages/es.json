@@ -18,14 +18,34 @@
   },
   "projects": {
     "tag": "PROJECTS.DIR",
-    "title": "TRABAJO_RECIENTE",
+    "title": "ÚLTIMOS_PROYECTOS",
     "code": "CÓDIGO",
-    "demo": "DEMO"
+    "demo": "DEMO",
+    "items": {
+      "ecommerce": {
+        "description": "Plataforma e-commerce full-stack con gestión de inventario en tiempo real e integración de pagos."
+      },
+      "task_manager": {
+        "description": "Sistema colaborativo de gestión de tareas con actualizaciones en tiempo real y analíticas de equipo."
+      },
+      "ai_chatbot": {
+        "description": "Chatbot inteligente que utiliza procesamiento de lenguaje natural para automatización de soporte al cliente."
+      },
+      "analytics": {
+        "description": "Dashboard de analíticas en tiempo real con visualización de datos y funciones de reportes."
+      }
+    }
   },
   "skills": {
     "tag": "SKILLS.SYS",
     "title": "TECH_STACK",
-    "proficiency": "NIVELES_DE_DOMINIO"
+    "proficiency": "NIVELES_DE_DOMINIO",
+    "levels": {
+      "full_stack_dev": "DESARROLLO_FULL_STACK",
+      "front_end": "FRONT_END",
+      "back_end": "BACK_END",
+      "database_mgmt": "GESTIÓN_DE_BD"
+    }
   },
   "contact": {
     "tag": "CONTACT.EXE",

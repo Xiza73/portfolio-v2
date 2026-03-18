@@ -3,7 +3,8 @@ import { AnimatedSection } from '@/components/react/AnimatedSection';
 import { SkillProgressBar } from '@/components/react/SkillProgressBar';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import SkillCard from '@/components/ui/SkillCard.astro';
-import { proficiencyLevels, skillCategories } from '@/data/skills';
+import { getProficiencyLevels, skillCategories } from '@/data/skills';
+import { type Language } from '@/i18n/config';
 
 interface Props {
   t: {
@@ -11,9 +12,11 @@ interface Props {
     title: string;
     proficiency: string;
   };
+  lang: Language;
 }
 
-const { t } = Astro.props;
+const { t, lang } = Astro.props;
+const proficiencyLevels = getProficiencyLevels(lang);
 ---
 
 <section id="skills" class="bg-bg-surface py-16 px-4 sm:py-20 sm:px-6 lg:px-8">

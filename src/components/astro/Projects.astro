@@ -2,7 +2,8 @@
 import { AnimatedSection } from '@/components/react/AnimatedSection';
 import ProjectCard from '@/components/ui/ProjectCard.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
-import { projects } from '@/data/projects';
+import { getProjects } from '@/data/projects';
+import { type Language } from '@/i18n/config';
 
 interface Props {
   t: {
@@ -11,9 +12,11 @@ interface Props {
     code: string;
     demo: string;
   };
+  lang: Language;
 }
 
-const { t } = Astro.props;
+const { t, lang } = Astro.props;
+const projects = getProjects(lang);
 ---
 
 <section id="projects" class="py-16 px-4 sm:py-20 sm:px-6 lg:px-8">

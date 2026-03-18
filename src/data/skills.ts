@@ -1,3 +1,5 @@
+import { type Language } from '@/i18n/config';
+import { getTranslation } from '@/i18n/utils';
 import { type ProficiencyLevel, type SkillCategory } from '@/types/skill';
 
 export const skillCategories: SkillCategory[] = [
@@ -33,9 +35,24 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
-export const proficiencyLevels: ProficiencyLevel[] = [
-  { name: 'FULL_STACK_DEV', level: 90 },
-  { name: 'FRONT_END', level: 95 },
-  { name: 'BACK_END', level: 85 },
-  { name: 'DATABASE_MGMT', level: 80 },
+interface ProficiencyData {
+  id: string;
+  level: number;
+}
+
+const proficiencyData: ProficiencyData[] = [
+  { id: 'full_stack_dev', level: 90 },
+  { id: 'front_end', level: 95 },
+  { id: 'back_end', level: 85 },
+  { id: 'database_mgmt', level: 80 },
 ];
+
+export function getProficiencyLevels(lang: Language): ProficiencyLevel[] {
+  const t = getTranslation(lang);
+  const levels = t.skills.levels;
+
+  return proficiencyData.map((item) => ({
+    name: levels[item.id as keyof typeof levels] ?? item.id,
+    level: item.level,
+  }));
+}

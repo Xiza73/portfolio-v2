@@ -18,14 +18,34 @@
   },
   "projects": {
     "tag": "PROJECTS.DIR",
-    "title": "RECENT_WORK",
+    "title": "LATEST_WORK",
     "code": "CODE",
-    "demo": "DEMO"
+    "demo": "DEMO",
+    "items": {
+      "ecommerce": {
+        "description": "Full-stack e-commerce platform with real-time inventory management and payment integration."
+      },
+      "task_manager": {
+        "description": "Collaborative task management system with real-time updates and team analytics."
+      },
+      "ai_chatbot": {
+        "description": "Intelligent chatbot using natural language processing for customer support automation."
+      },
+      "analytics": {
+        "description": "Real-time analytics dashboard with data visualization and reporting features."
+      }
+    }
   },
   "skills": {
     "tag": "SKILLS.SYS",
     "title": "TECH_STACK",
-    "proficiency": "PROFICIENCY_LEVELS"
+    "proficiency": "PROFICIENCY_LEVELS",
+    "levels": {
+      "full_stack_dev": "FULL_STACK_DEV",
+      "front_end": "FRONT_END",
+      "back_end": "BACK_END",
+      "database_mgmt": "DATABASE_MGMT"
+    }
   },
   "contact": {
     "tag": "CONTACT.EXE",
