@@ -22,6 +22,16 @@ export default tseslint.config(
   // Astro rules
   ...eslintPluginAstro.configs.recommended,
 
+  // Astro files: use TypeScript parser for frontmatter scripts
+  {
+    files: ['**/*.astro'],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+      },
+    },
+  },
+
   // Custom rules for all files
   {
     plugins: {
