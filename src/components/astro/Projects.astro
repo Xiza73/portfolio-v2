@@ -3,18 +3,29 @@ import { AnimatedSection } from '@/components/react/AnimatedSection';
 import ProjectCard from '@/components/ui/ProjectCard.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import { projects } from '@/data/projects';
+
+interface Props {
+  t: {
+    tag: string;
+    title: string;
+    code: string;
+    demo: string;
+  };
+}
+
+const { t } = Astro.props;
 ---
 
 <section id="projects" class="py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-6xl">
     <AnimatedSection client:visible>
-      <SectionHeading tag="PROJECTS.DIR" title="RECENT_WORK" />
+      <SectionHeading tag={t.tag} title={t.title} />
     </AnimatedSection>
 
     <div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8">
       {projects.map((project, index) => (
         <AnimatedSection client:visible delay={index * 0.1} className="h-full">
-          <ProjectCard project={project} />
+          <ProjectCard project={project} codeLabel={t.code} demoLabel={t.demo} />
         </AnimatedSection>
       ))}
     </div>

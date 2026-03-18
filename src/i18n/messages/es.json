@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "Manuel Fajardo (Xiza) — Ingeniero de Software",
+    "description": "Portafolio de Manuel Fajardo (Xiza), Ingeniero de Software. Creando experiencias digitales con código limpio y precisión pixel-perfect."
+  },
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "HELLO_WORLD.EXE",
+    "title_line1": "SOFTWARE",
+    "title_line2": "ENGINEER",
+    "description": "Creando experiencias digitales con código limpio y precisión pixel-perfect. Especializado en desarrollo full-stack con pasión por soluciones innovadoras.",
+    "cta": "VER_PROYECTOS"
+  },
+  "projects": {
+    "tag": "PROJECTS.DIR",
+    "title": "TRABAJO_RECIENTE",
+    "code": "CÓDIGO",
+    "demo": "DEMO"
+  },
+  "skills": {
+    "tag": "SKILLS.SYS",
+    "title": "TECH_STACK",
+    "proficiency": "NIVELES_DE_DOMINIO"
+  },
+  "contact": {
+    "tag": "CONTACT.EXE",
+    "title": "PONTE_EN_CONTACTO",
+    "info_title": "INFO_DE_CONTACTO",
+    "email_label": "EMAIL",
+    "location_label": "UBICACIÓN",
+    "location_value": "Lima, Perú",
+    "availability": "Disponible para oportunidades freelance y posiciones full-time. ¡Construyamos algo increíble juntos!",
+    "form": {
+      "name": "NOMBRE",
+      "name_placeholder": "INGRESA_NOMBRE",
+      "email": "EMAIL",
+      "email_placeholder": "INGRESA_EMAIL",
+      "message": "MENSAJE",
+      "message_placeholder": "INGRESA_MENSAJE",
+      "submit": "ENVIAR_MENSAJE",
+      "submitting": "ENVIANDO...",
+      "success": "MENSAJE_ENVIADO.ÉXITO",
+      "error": "ERROR_AL_ENVIAR. INTENTA_DE_NUEVO."
+    }
+  },
+  "footer": {
+    "coded_with": "CREADO CON",
+    "by": "POR XIZA",
+    "rights": "TODOS_LOS_DERECHOS_RESERVADOS"
+  },
+  "language": {
+    "switch_label": "EN"
+  }
+}

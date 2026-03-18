@@ -3,6 +3,18 @@ import { AnimatedSection } from '@/components/react/AnimatedSection';
 import { PixelCharacter } from '@/components/react/PixelCharacter';
 import SocialLink from '@/components/ui/SocialLink.astro';
 import { socialLinks } from '@/data/social-links';
+
+interface Props {
+  t: {
+    greeting: string;
+    title_line1: string;
+    title_line2: string;
+    description: string;
+    cta: string;
+  };
+}
+
+const { t } = Astro.props;
 ---
 
 <section
@@ -16,19 +28,18 @@ import { socialLinks } from '@/data/social-links';
         <div class="space-y-4 text-center sm:space-y-5 md:space-y-6 md:text-left">
           <div class="inline-block bg-primary px-3 py-1.5 pixel-corner sm:px-4 sm:py-2">
             <span class="pixel-text text-[10px] text-text-dark sm:text-xs md:text-sm"
-              >HELLO_WORLD.EXE</span
+              >{t.greeting}</span
             >
           </div>
 
           <h1
             class="pixel-text text-2xl leading-tight text-primary sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            SOFTWARE<br />ENGINEER
+            {t.title_line1}<br />{t.title_line2}
           </h1>
 
           <p class="pixel-text text-[10px] leading-relaxed text-accent sm:text-xs md:text-sm">
-            Crafting digital experiences with clean code and pixel-perfect precision. Specializing in
-            full-stack development with a passion for creating innovative solutions.
+            {t.description}
           </p>
 
           <!-- Social Links -->
@@ -45,7 +56,7 @@ import { socialLinks } from '@/data/social-links';
               class="inline-block bg-primary px-5 py-3 transition-colors hover:bg-accent pixel-corner sm:px-8 sm:py-4 group"
             >
               <span class="pixel-text text-[10px] text-text-dark sm:text-xs md:text-sm"
-                >VIEW_PROJECTS</span
+                >{t.cta}</span
               >
             </a>
           </div>

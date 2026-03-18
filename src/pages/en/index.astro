@@ -8,10 +8,10 @@ import Hero from '@/components/astro/Hero.astro';
 import Projects from '@/components/astro/Projects.astro';
 import Skills from '@/components/astro/Skills.astro';
 import { getNavItems } from '@/data/navigation';
-import { getLocaleFromUrl, getTranslation } from '@/i18n/utils';
+import { getTranslation } from '@/i18n/utils';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const lang = getLocaleFromUrl(Astro.url);
+const lang = 'en' as const;
 const t = getTranslation(lang);
 const navItems = getNavItems(t.nav);
 ---

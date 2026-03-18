@@ -4,12 +4,22 @@ import { SkillProgressBar } from '@/components/react/SkillProgressBar';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import SkillCard from '@/components/ui/SkillCard.astro';
 import { proficiencyLevels, skillCategories } from '@/data/skills';
+
+interface Props {
+  t: {
+    tag: string;
+    title: string;
+    proficiency: string;
+  };
+}
+
+const { t } = Astro.props;
 ---
 
 <section id="skills" class="bg-bg-surface py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-6xl">
     <AnimatedSection client:visible>
-      <SectionHeading tag="SKILLS.SYS" title="TECH_STACK" />
+      <SectionHeading tag={t.tag} title={t.title} />
     </AnimatedSection>
 
     <div class="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
@@ -24,7 +34,7 @@ import { proficiencyLevels, skillCategories } from '@/data/skills';
     <AnimatedSection client:visible delay={0.4} className="mt-12 sm:mt-16">
       <div class="border-4 border-primary p-4 sm:p-5 md:p-6 pixel-corner">
         <h3 class="pixel-text mb-4 text-xs text-primary sm:mb-6 sm:text-sm md:text-base">
-          PROFICIENCY_LEVELS
+          {t.proficiency}
         </h3>
         <SkillProgressBar client:visible levels={proficiencyLevels} />
       </div>

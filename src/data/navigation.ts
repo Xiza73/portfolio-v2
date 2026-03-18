@@ -1,8 +1,15 @@
 import { type NavItem } from '@/types/navigation';
 
-export const navItems: NavItem[] = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
-];
+export function getNavItems(nav: {
+  about: string;
+  projects: string;
+  skills: string;
+  contact: string;
+}): NavItem[] {
+  return [
+    { label: nav.about, href: '#about' },
+    { label: nav.projects, href: '#projects' },
+    { label: nav.skills, href: '#skills' },
+    { label: nav.contact, href: '#contact' },
+  ];
+}

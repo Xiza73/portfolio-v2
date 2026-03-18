@@ -2,12 +2,38 @@
 import { AnimatedSection } from '@/components/react/AnimatedSection';
 import { ContactForm } from '@/components/react/ContactForm';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
+
+interface Props {
+  t: {
+    tag: string;
+    title: string;
+    info_title: string;
+    email_label: string;
+    location_label: string;
+    location_value: string;
+    availability: string;
+    form: {
+      name: string;
+      name_placeholder: string;
+      email: string;
+      email_placeholder: string;
+      message: string;
+      message_placeholder: string;
+      submit: string;
+      submitting: string;
+      success: string;
+      error: string;
+    };
+  };
+}
+
+const { t } = Astro.props;
 ---
 
 <section id="contact" class="py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-6xl">
     <AnimatedSection client:visible>
-      <SectionHeading tag="CONTACT.EXE" title="GET_IN_TOUCH" />
+      <SectionHeading tag={t.tag} title={t.title} />
     </AnimatedSection>
 
     <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
@@ -16,7 +42,7 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
         <div class="space-y-4 sm:space-y-6">
           <div class="border-4 border-primary p-4 sm:p-5 md:p-6 pixel-corner">
             <h3 class="pixel-text mb-4 text-xs text-primary sm:mb-6 sm:text-sm md:text-base">
-              CONTACT_INFO
+              {t.info_title}
             </h3>
 
             <div class="space-y-4">
@@ -25,27 +51,14 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
                 <div
                   class="flex h-9 w-9 shrink-0 items-center justify-center bg-primary pixel-corner sm:h-10 sm:w-10 md:h-12 md:w-12"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="text-text-dark sm:h-5 sm:w-5"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-dark sm:h-5 sm:w-5">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <path d="M22 6l-10 7L2 6"></path>
                   </svg>
                 </div>
                 <div>
-                  <p class="pixel-text text-[9px] text-accent sm:text-[10px] md:text-xs">EMAIL</p>
-                  <p class="pixel-text mt-0.5 text-[9px] text-text sm:text-[10px] md:text-xs">
-                    contact@xiza.dev
-                  </p>
+                  <p class="pixel-text text-[9px] text-accent sm:text-[10px] md:text-xs">{t.email_label}</p>
+                  <p class="pixel-text mt-0.5 text-[9px] text-text sm:text-[10px] md:text-xs">contact@xiza.dev</p>
                 </div>
               </div>
 
@@ -54,29 +67,14 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
                 <div
                   class="flex h-9 w-9 shrink-0 items-center justify-center bg-primary pixel-corner sm:h-10 sm:w-10 md:h-12 md:w-12"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="text-text-dark sm:h-5 sm:w-5"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-dark sm:h-5 sm:w-5">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </div>
                 <div>
-                  <p class="pixel-text text-[9px] text-accent sm:text-[10px] md:text-xs">
-                    LOCATION
-                  </p>
-                  <p class="pixel-text mt-0.5 text-[9px] text-text sm:text-[10px] md:text-xs">
-                    Lima, Peru
-                  </p>
+                  <p class="pixel-text text-[9px] text-accent sm:text-[10px] md:text-xs">{t.location_label}</p>
+                  <p class="pixel-text mt-0.5 text-[9px] text-text sm:text-[10px] md:text-xs">{t.location_value}</p>
                 </div>
               </div>
             </div>
@@ -85,8 +83,7 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
           <!-- Availability box -->
           <div class="border-4 border-accent bg-bg-surface p-4 sm:p-5 md:p-6 pixel-corner">
             <p class="pixel-text text-[9px] leading-relaxed text-primary sm:text-[10px] md:text-xs">
-              Available for freelance opportunities and full-time positions. Let's build something
-              amazing together!
+              {t.availability}
             </p>
           </div>
         </div>
@@ -94,7 +91,7 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
 
       <!-- Contact Form -->
       <AnimatedSection client:visible direction="right">
-        <ContactForm client:idle />
+        <ContactForm client:idle translations={t.form} />
       </AnimatedSection>
     </div>
   </div>

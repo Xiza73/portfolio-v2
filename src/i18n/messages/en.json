@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "Manuel Fajardo (Xiza) — Software Engineer",
+    "description": "Portfolio of Manuel Fajardo (Xiza), Software Engineer. Crafting digital experiences with clean code and pixel-perfect precision."
+  },
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "HELLO_WORLD.EXE",
+    "title_line1": "SOFTWARE",
+    "title_line2": "ENGINEER",
+    "description": "Crafting digital experiences with clean code and pixel-perfect precision. Specializing in full-stack development with a passion for creating innovative solutions.",
+    "cta": "VIEW_PROJECTS"
+  },
+  "projects": {
+    "tag": "PROJECTS.DIR",
+    "title": "RECENT_WORK",
+    "code": "CODE",
+    "demo": "DEMO"
+  },
+  "skills": {
+    "tag": "SKILLS.SYS",
+    "title": "TECH_STACK",
+    "proficiency": "PROFICIENCY_LEVELS"
+  },
+  "contact": {
+    "tag": "CONTACT.EXE",
+    "title": "GET_IN_TOUCH",
+    "info_title": "CONTACT_INFO",
+    "email_label": "EMAIL",
+    "location_label": "LOCATION",
+    "location_value": "Lima, Peru",
+    "availability": "Available for freelance opportunities and full-time positions. Let's build something amazing together!",
+    "form": {
+      "name": "NAME",
+      "name_placeholder": "ENTER_NAME",
+      "email": "EMAIL",
+      "email_placeholder": "ENTER_EMAIL",
+      "message": "MESSAGE",
+      "message_placeholder": "ENTER_MESSAGE",
+      "submit": "SEND_MESSAGE",
+      "submitting": "SENDING...",
+      "success": "MESSAGE_SENT.SUCCESS",
+      "error": "ERROR_SENDING. TRY_AGAIN."
+    }
+  },
+  "footer": {
+    "coded_with": "CODED WITH",
+    "by": "BY XIZA",
+    "rights": "ALL_RIGHTS_RESERVED"
+  },
+  "language": {
+    "switch_label": "ES"
+  }
+}

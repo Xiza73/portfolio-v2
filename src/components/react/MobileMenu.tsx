@@ -5,9 +5,11 @@ import { type NavItem } from '@/types/navigation';
 
 interface MobileMenuProps {
   navItems: NavItem[];
+  switchLabel: string;
+  switchPath: string;
 }
 
-function MobileMenu({ navItems }: MobileMenuProps) {
+function MobileMenu({ navItems, switchLabel, switchPath }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleToggle() {
@@ -45,6 +47,12 @@ function MobileMenu({ navItems }: MobileMenuProps) {
                 {item.label}
               </a>
             ))}
+            <a
+              href={switchPath}
+              className="pixel-text text-xs text-accent transition-colors duration-200 hover:text-primary"
+            >
+              [{switchLabel}]
+            </a>
           </div>
         </nav>
       )}
