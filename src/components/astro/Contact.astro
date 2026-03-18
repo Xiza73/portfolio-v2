@@ -38,8 +38,8 @@ const { t } = Astro.props;
 
     <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
       <!-- Contact Info -->
-      <AnimatedSection client:visible direction="left">
-        <div class="space-y-4 sm:space-y-6">
+      <AnimatedSection client:visible direction="left" className="h-full">
+        <div class="flex h-full flex-col gap-4 sm:gap-6">
           <div class="border-4 border-primary p-4 sm:p-5 md:p-6 pixel-corner">
             <h3 class="pixel-text mb-4 text-xs text-primary sm:mb-6 sm:text-sm md:text-base">
               {t.info_title}
@@ -113,7 +113,7 @@ const { t } = Astro.props;
           </div>
 
           <!-- Availability box -->
-          <div class="border-4 border-accent bg-bg-surface p-4 sm:p-5 md:p-6 pixel-corner">
+          <div class="flex flex-1 items-center border-4 border-accent bg-bg-surface p-4 sm:p-5 md:p-6 pixel-corner">
             <p class="pixel-text text-[9px] leading-relaxed text-primary sm:text-[10px] md:text-xs">
               {t.availability}
             </p>
@@ -122,7 +122,7 @@ const { t } = Astro.props;
       </AnimatedSection>
 
       <!-- Contact Form -->
-      <AnimatedSection client:visible direction="right">
+      <AnimatedSection client:visible direction="right" className="h-full">
         <ContactForm client:idle translations={t.form} />
       </AnimatedSection>
     </div>

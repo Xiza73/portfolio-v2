@@ -58,9 +58,9 @@ function ContactForm({ translations: t }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="border-4 border-primary p-4 pixel-corner sm:p-5 md:p-6"
+      className="flex h-full flex-col border-4 border-primary p-4 pixel-corner sm:p-5 md:p-6"
     >
-      <div className="space-y-4">
+      <div className="flex flex-1 flex-col space-y-4">
         {/* Name */}
         <div>
           <label
@@ -106,7 +106,7 @@ function ContactForm({ translations: t }: ContactFormProps) {
         </div>
 
         {/* Message */}
-        <div>
+        <div className="flex flex-1 flex-col">
           <label
             htmlFor="message"
             className="mb-1.5 block pixel-text text-[9px] text-primary sm:mb-2 sm:text-[10px] md:text-xs"
@@ -118,7 +118,7 @@ function ContactForm({ translations: t }: ContactFormProps) {
             rows={5}
             {...register('message')}
             placeholder={t.message_placeholder}
-            className="w-full resize-none border-2 border-primary bg-bg-input px-3 py-2.5 pixel-text text-[9px] text-text transition-colors placeholder:text-text/30 focus:border-accent focus:outline-none sm:px-4 sm:py-3 sm:text-[10px] md:text-xs"
+            className="w-full flex-1 resize-none border-2 border-primary bg-bg-input px-3 py-2.5 pixel-text text-[9px] text-text transition-colors placeholder:text-text/30 focus:border-accent focus:outline-none sm:px-4 sm:py-3 sm:text-[10px] md:text-xs"
           />
           {errors.message && (
             <p className="mt-1 pixel-text text-[8px] text-accent sm:text-[9px]">
