@@ -29,7 +29,7 @@ function ActiveNavHighlight({ sectionIds }: ActiveNavHighlightProps) {
 
   useEffect(() => {
     // Update all nav links' styles based on active section
-    const links = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+    const links = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]:not([data-logo])');
     for (const link of links) {
       const href = link.getAttribute('href');
       if (href === `#${activeId}`) {

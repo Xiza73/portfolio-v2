@@ -63,7 +63,7 @@ function Header() {
             </button>
 
             {isMenuOpen && (
-              <nav
+              <div
                 className="absolute left-0 right-0 top-full border-t-2 border-primary bg-bg px-4 py-5 sm:px-6"
                 role="navigation"
               >
@@ -88,7 +88,7 @@ function Header() {
                     [{switchLabel}]
                   </button>
                 </div>
-              </nav>
+              </div>
             )}
           </div>
         </div>
