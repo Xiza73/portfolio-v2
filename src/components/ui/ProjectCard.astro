@@ -11,15 +11,15 @@ const { project, demoLabel = 'DEMO' } = Astro.props;
 ---
 
 <article
-  class="flex h-full flex-col border-4 border-primary bg-bg-surface p-4 transition-colors hover:border-accent sm:p-5 md:p-6 pixel-corner group"
+  class="flex h-full min-w-0 flex-col overflow-hidden border-4 border-primary bg-bg-surface p-4 transition-colors hover:border-accent sm:p-5 md:p-6 pixel-corner group"
 >
   <h3
-    class="pixel-text mb-2 text-xs text-primary transition-colors group-hover:text-accent sm:mb-3 sm:text-sm md:text-base"
+    class="pixel-text mb-2 text-xs text-primary transition-colors group-hover:text-accent wrap-break-word sm:mb-3 sm:text-sm md:text-base"
   >
     {project.title}
   </h3>
 
-  <p class="pixel-text mb-3 text-[9px] leading-relaxed text-text sm:mb-4 sm:text-[10px] md:text-xs">
+  <p class="pixel-text mb-3 text-[9px] leading-relaxed text-text wrap-break-word sm:mb-4 sm:text-[10px] md:text-xs">
     {project.description}
   </p>
 
