@@ -21,6 +21,11 @@
     "title": "ÚLTIMOS_PROYECTOS",
     "code": "CÓDIGO",
     "demo": "DEMO",
+    "repo_labels": {
+      "code": "CÓDIGO",
+      "front": "FRONT",
+      "back": "BACK"
+    },
     "items": {
       "ecommerce": {
         "description": "Plataforma e-commerce full-stack con gestión de inventario en tiempo real e integración de pagos."

@@ -1,7 +1,12 @@
+export interface GithubRepo {
+  label: string;
+  url: string;
+}
+
 export interface Project {
   title: string;
   description: string;
   tech: string[];
-  github?: string;
+  github: GithubRepo[];
   demo?: string;
 }

@@ -21,6 +21,11 @@
     "title": "LATEST_WORK",
     "code": "CODE",
     "demo": "DEMO",
+    "repo_labels": {
+      "code": "CODE",
+      "front": "FRONT",
+      "back": "BACK"
+    },
     "items": {
       "ecommerce": {
         "description": "Full-stack e-commerce platform with real-time inventory management and payment integration."

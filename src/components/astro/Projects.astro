@@ -28,7 +28,7 @@ const projects = getProjects(lang);
     <div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8">
       {projects.map((project, index) => (
         <AnimatedSection client:visible delay={index * 0.1} className="h-full">
-          <ProjectCard project={project} codeLabel={t.code} demoLabel={t.demo} />
+          <ProjectCard project={project} demoLabel={t.demo} />
         </AnimatedSection>
       ))}
     </div>
