@@ -31,7 +31,10 @@ function HeroSection() {
                 </span>
               </div>
 
-              <h1 className="pixel-text text-2xl leading-tight text-primary sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+              <h1
+                className="glitch-hover pixel-text text-2xl leading-tight text-primary sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+                data-text={`${hero.title_line1}\n${hero.title_line2}`}
+              >
                 {hero.title_line1}
                 <br />
                 {hero.title_line2}

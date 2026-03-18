@@ -109,6 +109,57 @@ html[data-gameboy] {
     z-index: 9999;
   }
 
+  /* Glitch effect on hover (easter egg) */
+  @keyframes glitch-1 {
+    0%, 100% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 2px); }
+    20% { clip-path: inset(50% 0 10% 0); transform: translate(3px, -1px); }
+    40% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 3px); }
+    60% { clip-path: inset(70% 0 5% 0); transform: translate(2px, -2px); }
+    80% { clip-path: inset(30% 0 40% 0); transform: translate(-1px, 1px); }
+  }
+
+  @keyframes glitch-2 {
+    0%, 100% { clip-path: inset(60% 0 10% 0); transform: translate(3px, -2px); }
+    20% { clip-path: inset(10% 0 50% 0); transform: translate(-3px, 1px); }
+    40% { clip-path: inset(40% 0 20% 0); transform: translate(2px, -3px); }
+    60% { clip-path: inset(5% 0 70% 0); transform: translate(-2px, 2px); }
+    80% { clip-path: inset(50% 0 30% 0); transform: translate(1px, -1px); }
+  }
+
+  .glitch-hover {
+    position: relative;
+    cursor: default;
+  }
+
+  .glitch-hover::before,
+  .glitch-hover::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    white-space: pre-line;
+    transition: opacity 0s 0s;
+  }
+
+  .glitch-hover::before {
+    color: var(--color-accent);
+    animation: glitch-1 0.3s steps(2) infinite paused;
+  }
+
+  .glitch-hover::after {
+    color: var(--color-primary);
+    animation: glitch-2 0.3s steps(2) infinite paused;
+  }
+
+  .glitch-hover:hover::before,
+  .glitch-hover:hover::after {
+    opacity: 0.8;
+    animation-play-state: running;
+    transition: opacity 0s 2s;
+  }
+
   /* Game Boy transition — screen shake */
   @keyframes gameboy-shake {
     0%, 100% { transform: translate(0, 0); }
@@ -139,6 +190,11 @@ html[data-gameboy] {
 
     .gameboy-shake {
       animation: none !important;
+    }
+
+    .glitch-hover::before,
+    .glitch-hover::after {
+      display: none;
     }
   }
 }
