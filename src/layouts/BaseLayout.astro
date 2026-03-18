@@ -1,16 +1,18 @@
 ---
 import { GameBoyMode } from '@/components/react/GameBoyMode';
+import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import { getTranslation } from '@/i18n/utils';
 
 interface Props {
   title?: string;
   description?: string;
-  lang?: string;
 }
 
+const defaultT = getTranslation(DEFAULT_LANGUAGE);
+
 const {
-  title = 'Manuel Fajardo (Xiza) — Software Engineer',
-  description = 'Portfolio of Manuel Fajardo (Xiza), Software Engineer. Crafting digital experiences with clean code and pixel-perfect precision.',
-  lang = 'es',
+  title = defaultT.meta.title,
+  description = defaultT.meta.description,
 } = Astro.props;
 
 const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://xiza.dev';
@@ -28,7 +30,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang={lang} style="overflow-x: clip;">
+<html lang={DEFAULT_LANGUAGE} style="overflow-x: clip;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,17 +42,13 @@ const jsonLd = {
     <!-- Canonical -->
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Alternate language -->
-    <link rel="alternate" hreflang="es" href={new URL('/', siteUrl).href} />
-    <link rel="alternate" hreflang="en" href={new URL('/en/', siteUrl).href} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/', siteUrl).href} />
-
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:locale" content={lang === 'es' ? 'es_PE' : 'en_US'} />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:site_name" content="Xiza.dev" />
 
     <!-- Twitter Card -->
@@ -74,11 +72,17 @@ const jsonLd = {
 
     <title>{title}</title>
 
-    <!-- Prevent flash of wrong theme when Game Boy mode is saved -->
+    <!-- Prevent flash of wrong theme/language -->
     <script is:inline>
       if (localStorage.getItem('gameboy-mode') === 'on') {
         document.documentElement.setAttribute('data-gameboy', '');
       }
+      (function() {
+        var lang = localStorage.getItem('language');
+        if (lang === 'en' || lang === 'es') {
+          document.documentElement.lang = lang;
+        }
+      })();
     </script>
   </head>
   <body class="crt-overlay min-h-screen bg-bg text-text">

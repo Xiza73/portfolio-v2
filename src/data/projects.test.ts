@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { projects } from './projects';
+import { getProjects } from './projects';
+
+const projects = getProjects('es');
 
 describe('projects data', () => {
   it('has at least one project', () => {
@@ -17,8 +19,8 @@ describe('projects data', () => {
 
   it('github URLs are valid when present', () => {
     for (const project of projects) {
-      if (project.github) {
-        expect(project.github).toMatch(/^https:\/\//);
+      for (const repo of project.github) {
+        expect(repo.url).toMatch(/^https:\/\//);
       }
     }
   });

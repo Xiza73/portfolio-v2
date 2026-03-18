@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { proficiencyLevels, skillCategories } from './skills';
+import { getProficiencyLevels, skillCategories } from './skills';
+
+const proficiencyLevels = getProficiencyLevels('es');
 
 describe('skillCategories data', () => {
   it('has at least one category', () => {

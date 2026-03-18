@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { getLocaleFromUrl, getLocalizedPath, getTranslation } from './utils';
+import { getTranslation } from './utils';
 
 describe('getTranslation', () => {
   it('returns Spanish translations for "es"', () => {
@@ -30,29 +30,5 @@ describe('getTranslation', () => {
     const esKeys = getKeys(es).sort();
     const enKeys = getKeys(en).sort();
     expect(esKeys).toEqual(enKeys);
-  });
-});
-
-describe('getLocaleFromUrl', () => {
-  it('returns "es" for root URL', () => {
-    expect(getLocaleFromUrl(new URL('http://localhost/'))).toBe('es');
-  });
-
-  it('returns "en" for /en/ URL', () => {
-    expect(getLocaleFromUrl(new URL('http://localhost/en/'))).toBe('en');
-  });
-
-  it('returns "es" for unknown prefix', () => {
-    expect(getLocaleFromUrl(new URL('http://localhost/fr/'))).toBe('es');
-  });
-});
-
-describe('getLocalizedPath', () => {
-  it('returns path as-is for default language', () => {
-    expect(getLocalizedPath('/', 'es')).toBe('/');
-  });
-
-  it('prefixes path with /en for English', () => {
-    expect(getLocalizedPath('/', 'en')).toBe('/en/');
   });
 });

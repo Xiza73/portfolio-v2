@@ -1,32 +1,26 @@
 ---
 import '@/styles/global.css';
 
-import Contact from '@/components/astro/Contact.astro';
-import Footer from '@/components/astro/Footer.astro';
-import Header from '@/components/astro/Header.astro';
-import Hero from '@/components/astro/Hero.astro';
-import Projects from '@/components/astro/Projects.astro';
-import Skills from '@/components/astro/Skills.astro';
+import { ContactSection } from '@/components/react/ContactSection';
+import { FooterSection } from '@/components/react/FooterSection';
+import { Header } from '@/components/react/Header';
+import { HeroSection } from '@/components/react/HeroSection';
+import { ProjectsSection } from '@/components/react/ProjectsSection';
+import { SkillsSection } from '@/components/react/SkillsSection';
 import { ActiveNavHighlight } from '@/components/react/ActiveNavHighlight';
-import { getNavItems } from '@/data/navigation';
-import { getLocaleFromUrl, getTranslation } from '@/i18n/utils';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-
-const lang = getLocaleFromUrl(Astro.url);
-const t = getTranslation(lang);
-const navItems = getNavItems(t.nav);
 ---
 
-<BaseLayout title={t.meta.title} description={t.meta.description} lang={lang}>
-  <Header navItems={navItems} lang={lang} switchLabel={t.language.switch_label} />
+<BaseLayout>
+  <Header client:load />
 
   <main class="overflow-x-clip">
-    <Hero t={t.hero} />
-    <Projects t={t.projects} lang={lang} />
-    <Skills t={t.skills} lang={lang} />
-    <Contact t={t.contact} />
+    <HeroSection client:load />
+    <ProjectsSection client:visible />
+    <SkillsSection client:visible />
+    <ContactSection client:idle />
   </main>
 
-  <Footer t={t.footer} />
+  <FooterSection client:idle />
   <ActiveNavHighlight client:idle sectionIds={['about', 'projects', 'skills', 'contact']} />
 </BaseLayout>
