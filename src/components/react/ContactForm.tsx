@@ -37,11 +37,17 @@ function ContactForm({ translations: t }: ContactFormProps) {
     defaultValues: { name: '', email: '', message: '' },
   });
 
-  async function onSubmit(_data: ContactFormInput) {
+  async function onSubmit(data: ContactFormInput) {
     setSubmitStatus('submitting');
     try {
-      // TODO: integrate with form endpoint (Formspree, Resend, etc.)
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch('/api/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Failed to send');
+
       setSubmitStatus('success');
       reset();
     } catch {
