@@ -38,7 +38,7 @@ const { t } = Astro.props;
 
     <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
       <!-- Contact Info -->
-      <AnimatedSection client:visible direction="left" className="h-full">
+      <AnimatedSection client:visible direction="left" className="h-full min-w-0">
         <div class="flex h-full flex-col gap-4 sm:gap-6">
           <div class="border-4 border-primary p-4 sm:p-5 md:p-6 pixel-corner">
             <h3 class="pixel-text mb-4 text-xs text-primary sm:mb-6 sm:text-sm md:text-base">
@@ -73,7 +73,7 @@ const { t } = Astro.props;
                   <p class="pixel-text text-[9px] text-accent sm:text-[10px] md:text-xs">
                     {t.email_label}
                   </p>
-                  <p class="pixel-text mt-0.5 text-[9px] text-text sm:text-[10px] md:text-xs">
+                  <p class="pixel-text mt-0.5 text-[9px] text-text wrap-break-word sm:text-[10px] md:text-xs">
                     m.fajardo.1098@gmial.com
                   </p>
                 </div>
@@ -122,7 +122,7 @@ const { t } = Astro.props;
       </AnimatedSection>
 
       <!-- Contact Form -->
-      <AnimatedSection client:visible direction="right" className="h-full">
+      <AnimatedSection client:visible direction="right" className="h-full min-w-0">
         <ContactForm client:idle translations={t.form} />
       </AnimatedSection>
     </div>
