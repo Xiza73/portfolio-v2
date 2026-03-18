@@ -1,0 +1,12 @@
+---
+import '@/styles/global.css';
+
+import { NotFoundGame } from '@/components/react/NotFoundGame';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — Page Not Found | Xiza.dev" description="This page doesn't exist, but there's a game to play!">
+  <main class="overflow-x-clip">
+    <NotFoundGame client:load />
+  </main>
+</BaseLayout>
