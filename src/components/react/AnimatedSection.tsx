@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 import { type ReactNode } from 'react';
 
+import { useReducedMotion } from '@/lib/use-reduced-motion';
+
 interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
@@ -24,6 +26,12 @@ function AnimatedSection({
   delay = 0,
   duration = 0.6,
 }: AnimatedSectionProps) {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
+
   const offset = directionMap[direction];
   const useScale = direction === 'scale';
 

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^5.0.0",
+    "@astrojs/sitemap": "^3.7.1",
     "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.5",

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 
+import { useReducedMotion } from '@/lib/use-reduced-motion';
 import { type ProficiencyLevel } from '@/types/skill';
 
 interface SkillProgressBarProps {
@@ -7,6 +8,8 @@ interface SkillProgressBarProps {
 }
 
 function SkillProgressBar({ levels }: SkillProgressBarProps) {
+  const reduced = useReducedMotion();
+
   return (
     <div className="space-y-3 sm:space-y-4">
       {levels.map((item, index) => (
@@ -20,13 +23,17 @@ function SkillProgressBar({ levels }: SkillProgressBarProps) {
             </span>
           </div>
           <div className="h-3 border-2 border-primary bg-bg-subtle sm:h-4">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: `${item.level}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: index * 0.2, ease: 'easeOut' }}
-              className="h-full bg-primary"
-            />
+            {reduced ? (
+              <div className="h-full bg-primary" style={{ width: `${item.level}%` }} />
+            ) : (
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: `${item.level}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: index * 0.2, ease: 'easeOut' }}
+                className="h-full bg-primary"
+              />
+            )}
           </div>
         </div>
       ))}

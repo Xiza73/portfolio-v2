@@ -16,8 +16,8 @@ const switchLang = lang === 'es' ? 'en' : 'es';
 const switchPath = getLocalizedPath('/', switchLang);
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b-4 border-primary bg-bg">
-  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<header class="fixed top-0 left-0 right-0 z-50 border-b-4 border-primary bg-bg" role="banner">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
     <div class="relative flex h-14 items-center justify-between sm:h-16 md:h-20">
       <!-- Logo -->
       <a href="#" class="flex items-center gap-2">

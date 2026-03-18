@@ -12,6 +12,20 @@ const {
 } = Astro.props;
 
 const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://xiza.dev';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Manuel Fajardo',
+  alternateName: 'Xiza',
+  jobTitle: 'Software Engineer',
+  url: siteUrl,
+  sameAs: [
+    'https://github.com/xiza',
+    'https://linkedin.com/in/xiza',
+  ],
+};
 ---
 
 <!doctype html>
@@ -22,17 +36,31 @@ const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://xiza.dev';
     <meta name="description" content={description} />
     <meta name="author" content="Manuel Fajardo (Xiza)" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Alternate language -->
+    <link rel="alternate" hreflang="es" href={new URL('/', siteUrl).href} />
+    <link rel="alternate" hreflang="en" href={new URL('/en/', siteUrl).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', siteUrl).href} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_PE' : 'en_US'} />
+    <meta property="og:site_name" content="Xiza.dev" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -47,7 +75,15 @@ const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://xiza.dev';
 
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-bg text-text">
+  <body class="crt-overlay min-h-screen bg-bg text-text">
+    <!-- Skip to content -->
+    <a
+      href="#about"
+      class="fixed left-2 top-2 z-[100] -translate-y-full bg-primary px-4 py-2 pixel-text text-xs text-text-dark transition-transform focus:translate-y-0 pixel-corner"
+    >
+      Skip to content
+    </a>
+
     <slot />
   </body>
 </html>
