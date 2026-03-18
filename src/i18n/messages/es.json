@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Manuel Fajardo (Xiza) — Ingeniero de Software",
-    "description": "Portafolio de Manuel Fajardo (Xiza), Ingeniero de Software. Creando experiencias digitales con código limpio y precisión pixel-perfect."
+    "title": "Manuel Fajardo",
+    "description": "Portafolio de Manuel Fajardo, Ingeniero de Software. Creando experiencias digitales con código limpio y precisión pixel-perfect."
   },
   "nav": {
     "about": "Sobre mí",
@@ -10,10 +10,10 @@
     "contact": "Contacto"
   },
   "hero": {
-    "greeting": "HELLO_WORLD.EXE",
+    "greeting": "HOLA_MUNDO.BAT",
     "title_line1": "SOFTWARE",
     "title_line2": "ENGINEER",
-    "description": "Creando experiencias digitales con código limpio y precisión pixel-perfect. Especializado en desarrollo full-stack con pasión por soluciones innovadoras.",
+    "description": "Creando experiencias digitales con código limpio y precisión pixel-perfect. Especializado en desarrollo full-stack con pasión por brindar las mejores soluciones.",
     "cta": "VER_PROYECTOS"
   },
   "projects": {

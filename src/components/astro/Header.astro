@@ -24,19 +24,23 @@ const switchPath = getLocalizedPath('/', switchLang);
         <div class="relative h-6 w-6 overflow-hidden bg-primary pixel-corner sm:h-8 sm:w-8">
           <div class="absolute right-0 top-0 h-2 w-2 bg-bg sm:h-3 sm:w-3"></div>
         </div>
-        <span class="pixel-text text-xs tracking-wider text-primary sm:text-sm md:text-xl">DEV.EXE</span>
+        <span class="pixel-text text-xs tracking-wider text-primary sm:text-sm md:text-xl"
+          >XIZA.EXE</span
+        >
       </a>
 
       <!-- Desktop Navigation -->
       <div class="hidden items-center gap-4 md:flex lg:gap-8">
-        {navItems.map((item) => (
-          <a
-            href={item.href}
-            class="pixel-text text-xs text-primary transition-colors duration-200 hover:text-accent lg:text-sm"
-          >
-            {item.label}
-          </a>
-        ))}
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="pixel-text text-xs text-primary transition-colors duration-200 hover:text-accent lg:text-sm"
+            >
+              {item.label}
+            </a>
+          ))
+        }
         <a
           href={switchPath}
           class="pixel-text text-xs text-accent transition-colors duration-200 hover:text-primary lg:text-sm"
@@ -46,7 +50,12 @@ const switchPath = getLocalizedPath('/', switchLang);
       </div>
 
       <!-- Mobile Menu (React Island) -->
-      <MobileMenu client:load navItems={navItems} switchLabel={switchLabel} switchPath={switchPath} />
+      <MobileMenu
+        client:load
+        navItems={navItems}
+        switchLabel={switchLabel}
+        switchPath={switchPath}
+      />
     </div>
   </nav>
 </header>
