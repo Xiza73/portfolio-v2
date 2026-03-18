@@ -1,0 +1,58 @@
+:root {
+  /* Backgrounds */
+  --color-bg: #000000;
+  --color-bg-surface: #0a0a0a;
+  --color-bg-input: #0a0a0a;
+  --color-bg-subtle: #1a1a1a;
+
+  /* Primary & Accent */
+  --color-primary: #FFD700;
+  --color-accent: #00FFFF;
+
+  /* Text */
+  --color-text: #FFFFFF;
+  --color-text-dark: #000000;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-surface: var(--color-bg-surface);
+  --color-bg-input: var(--color-bg-input);
+  --color-bg-subtle: var(--color-bg-subtle);
+  --color-primary: var(--color-primary);
+  --color-accent: var(--color-accent);
+  --color-text: var(--color-text);
+  --color-text-dark: var(--color-text-dark);
+}
+
+@layer base {
+  * {
+    @apply outline-none;
+  }
+
+  body {
+    @apply bg-bg text-text;
+  }
+
+  /* Pixel art custom styles */
+  .pixel-text {
+    font-family: 'Press Start 2P', cursive;
+    image-rendering: pixelated;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .pixel-corner {
+    clip-path: polygon(
+      0 8px, 8px 8px, 8px 0,
+      calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+      100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+      8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+    );
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}

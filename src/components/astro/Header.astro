@@ -1,0 +1,33 @@
+---
+import { MobileMenu } from '@/components/react/MobileMenu';
+import { navItems } from '@/data/navigation';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b-4 border-primary bg-bg">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative flex h-14 items-center justify-between sm:h-16 md:h-20">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="relative h-6 w-6 overflow-hidden bg-primary pixel-corner sm:h-8 sm:w-8">
+          <div class="absolute right-0 top-0 h-2 w-2 bg-bg sm:h-3 sm:w-3"></div>
+        </div>
+        <span class="pixel-text text-xs tracking-wider text-primary sm:text-sm md:text-xl">DEV.EXE</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-6 md:flex lg:gap-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="pixel-text text-xs text-primary transition-colors duration-200 hover:text-accent lg:text-sm"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile Menu (React Island) -->
+      <MobileMenu client:load navItems={navItems} />
+    </div>
+  </nav>
+</header>
