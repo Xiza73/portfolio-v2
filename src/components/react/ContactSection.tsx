@@ -56,7 +56,7 @@ function ContactSection() {
                         {contact.email_label}
                       </p>
                       <p className="pixel-text mt-0.5 text-[9px] text-text wrap-break-word sm:text-[10px] md:text-xs">
-                        m.fajardo.1098@gmial.com
+                        m.fajardo.1098@gmail.com
                       </p>
                     </div>
                   </div>
