@@ -5,12 +5,12 @@ import { getTranslation } from './utils';
 describe('getTranslation', () => {
   it('returns Spanish translations for "es"', () => {
     const t = getTranslation('es');
-    expect(t.hero.cta).toBe('VER_PROYECTOS');
+    expect(t.hero.cta).toBe('VER_CV');
   });
 
   it('returns English translations for "en"', () => {
     const t = getTranslation('en');
-    expect(t.hero.cta).toBe('VIEW_PROJECTS');
+    expect(t.hero.cta).toBe('VIEW_CV');
   });
 
   it('has matching keys in both languages', () => {

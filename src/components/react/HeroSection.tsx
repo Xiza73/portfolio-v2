@@ -11,8 +11,13 @@ const iconPaths: Record<string, string> = {
   mail: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6',
 };
 
+const CV_URLS = {
+  es: import.meta.env.PUBLIC_CV_URL_ES,
+  en: import.meta.env.PUBLIC_CV_URL_EN,
+} as const;
+
 function HeroSection() {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const hero = t.hero;
 
   return (
@@ -79,7 +84,9 @@ function HeroSection() {
               {/* CTA */}
               <div className="pt-1 sm:pt-2">
                 <a
-                  href="#projects"
+                  href={CV_URLS[lang]}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-primary px-5 py-3 transition-colors hover:bg-accent pixel-corner sm:px-8 sm:py-4 group"
                 >
                   <span className="pixel-text text-[10px] text-text-dark sm:text-xs md:text-sm">
